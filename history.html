@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>History - Fraud Detection</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <h1 class="nav-brand">Fraud Detection System</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="scanner.html">Scanner</a></li>
+      <li><a href="alerts.html">Real-Time Alerts</a></li>
+      <li><a href="history.html" class="active">History</a></li>
+    </ul>
+  </nav>
+
+  <!-- History UI -->
+  <div class="history-container">
+    <h2>Scan History</h2>
+    <button onclick="clearHistory()">Clear History</button>
+    <table>
+      <thead>
+        <tr>
+          <th>URL / App</th>
+          <th>Status & Category</th>
+          <th>Severity</th>
+          <th>Risk Score</th>
+          <th>Threat / Details</th>
+          <th>Scanned At</th>
+        </tr>
+      </thead>
+      <tbody id="historyBody">
+        <tr><td colspan="6">Loading...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Load shared logic -->
+  <script src="script.js"></script>
+  <script>
+    function loadHistory() {
+      const history = JSON.parse(localStorage.getItem("scanHistory")) || [];
+      const tableBody = document.getElementById("historyBody");
+      tableBody.innerHTML = "";
+
+      if (history.length === 0) {
+        tableBody.innerHTML = "<tr><td colspan='6'>No history available.</td></tr>";
+        return;
+      }
+
+      history.forEach(entry => {
+        const sevClass = severityClass(entry.severity);
+        const row = `<tr>
+          <td>${entry.url}</td>
+          <td>${entry.status} (${entry.category})</td>
+          <td class="${sevClass}">${entry.severity}</td>
+          <td>${entry.risk_score}/100</td>
+          <td>${entry.threat}</td>
+          <td>${entry.time}</td>
+        </tr>`;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    function clearHistory() {
+      localStorage.removeItem("scanHistory");
+      loadHistory();
+    }
+
+    window.onload = loadHistory;
+  </script>
+</body>
+</html>

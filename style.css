@@ -1,0 +1,332 @@
+/* -----------------------------
+   Global Styles
+------------------------------ */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #121212;
+  color: #e0e0e0;
+}
+
+/* -----------------------------
+   Navbar
+------------------------------ */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e1e2f;
+  padding: 15px 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo,
+.navbar .nav-brand {
+  font-size: 22px;
+  font-weight: bold;
+  color: #00ffcc;
+  letter-spacing: 1px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  margin-left: 20px;
+}
+
+.navbar ul li a {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  color: #00ffcc;
+}
+
+/* -----------------------------
+   Home Page Welcome
+------------------------------ */
+.welcome {
+  text-align: center;
+  margin-top: 120px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.welcome h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #00ffcc;
+}
+
+.welcome p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.scanner-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #00ffcc;
+  color: #000;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.scanner-btn:hover {
+  background: #00cc99;
+  color: #fff;
+}
+
+/* -----------------------------
+   Scanner Page
+------------------------------ */
+.scanner-container {
+  text-align: center;
+  margin-top: 120px;
+}
+
+.scanner-container h1 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #00ffcc;
+}
+
+.scanner-container input {
+  padding: 10px;
+  width: 350px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  margin-right: 10px;
+  outline: none;
+  font-size: 16px;
+  background: #1c1c2b;
+  color: #e0e0e0;
+}
+
+.scanner-container button {
+  padding: 10px 20px;
+  background: #00ffcc;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.scanner-container button:hover {
+  background: #00cc99;
+}
+
+/* -----------------------------
+   Results Container
+------------------------------ */
+.result-container {
+  margin: 40px auto;
+  max-width: 800px;
+  text-align: center;
+  background: #1c1c2b;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.result-container h2 {
+  color: #00ffcc;
+  margin-bottom: 20px;
+}
+
+/* -----------------------------
+   Shared Table Styling
+   (Scanner Results, History, Alerts)
+------------------------------ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #1c1c2b;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid #333;
+  color: #e0e0e0;
+}
+
+th {
+  background: #00cc99;
+  color: #fff;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background: #2a2a40;
+}
+
+tr:nth-child(odd) {
+  background: #1e1e2f;
+}
+
+tr:hover {
+  background: #2f2f4a;
+}
+
+/* -----------------------------
+   Severity Badges
+------------------------------ */
+.severity-low {
+  color: #1a7f37;
+  font-weight: 600;
+}
+
+.severity-medium {
+  color: #b76e00;
+  font-weight: 600;
+}
+
+.severity-high {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.severity-critical {
+  color: #ff3333;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* -----------------------------
+   History Page
+------------------------------ */
+.history-container {
+  width: 90%;
+  margin: 30px auto;
+  background: #1c1c2b;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.history-container h2 {
+  margin-top: 0;
+  color: #00ffcc;
+}
+
+.history-container button {
+  margin-bottom: 15px;
+  padding: 8px 14px;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.history-container button:hover {
+  background: #c0392b;
+}
+
+/* -----------------------------
+   Real-Time Alerts
+------------------------------ */
+/* Alerts Table Fixed Size */
+.alerts-container {
+  width: 100%;
+  max-width: 1000px;  /* consistent width */
+  margin: 30px auto;
+  background: #1c1c2b;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.alerts-container table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;   /* keeps column sizes consistent */
+}
+
+.alerts-container th,
+.alerts-container td {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: center;
+  color: #e0e0e0;
+  word-wrap: break-word; /* wraps long text */
+}
+
+.alerts-container th {
+  background: #00cc99;
+  color: #fff;
+}
+
+.alerts-table-wrapper {
+  max-height: 300px;    /* lock table height */
+  overflow-y: auto;     /* scroll inside if too many rows */
+  overflow-x: hidden;   /* no horizontal scroll */
+}
+
+/* --- Existing severity styles (for reference) --- */
+.severity-low {
+  color: green;
+  font-weight: bold;
+}
+.severity-medium {
+  color: orange;
+  font-weight: bold;
+}
+.severity-high {
+  color: red;
+  font-weight: bold;
+}
+.severity-critical {
+  color: darkred;
+  font-weight: bold;
+}
+
+/* --- UI Similarity Styling --- */
+.ui-score {
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 6px;
+  color: #fff;
+  display: inline-block;
+}
+
+.ui-low {
+  background-color: #4caf50; /* green */
+}
+.ui-medium {
+  background-color: #ff9800; /* orange */
+}
+.ui-high {
+  background-color: #f44336; /* red */
+}
+
+#uiDetails {
+  font-size: 0.9em;
+  color: #555;
+  font-style: italic;
+}

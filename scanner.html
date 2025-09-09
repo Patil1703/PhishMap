@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scanner - Fraud Detection</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <h1 class="nav-brand">Fraud Detection System</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="scanner.html" class="active">Scanner</a></li>
+      <li><a href="alerts.html">Real-Time Alerts</a></li>
+      <li><a href="history.html">History</a></li>
+    </ul>
+  </nav>
+
+  <!-- Scanner UI -->
+  <div class="scanner-container">
+    <input type="text" id="urlInput" placeholder="Enter URL or App link..." />
+    <button onclick="scanInput()">Scan</button>
+  </div>
+
+  <!-- Results -->
+  <div id="resultContainer" class="result-container" style="display:none;">
+    <h2>Scan Results</h2>
+    <table id="resultTable">
+      <tr><th>Feature</th><th>Value</th></tr>
+      <tr><td>Status</td><td id="status">-</td></tr>
+      <tr><td>Domain Age / Risk</td><td id="domainAge">-</td></tr>
+      <tr><td>Threat / Explanation</td><td id="ipAddress">-</td></tr>
+      <!-- NEW rows for UI similarity -->
+      <tr><td>UI Brand Match</td><td id="uiBrand">-</td></tr>
+      <tr><td>UI Similarity</td><td id="uiScore">-</td></tr>
+      <tr><td>UI Explanation</td><td id="uiDetails">-</td></tr>
+    </table>
+  </div>
+
+  <!-- Load the unified scan logic -->
+  <script src="script.js"></script>
+</body>
+</html>

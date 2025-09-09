@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-Time Alerts</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <h1>Fraud Detection System</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="scanner.html">Scanner</a></li>
+      <li><a href="alerts.html" class="active">Real-Time Alerts</a></li>
+      <li><a href="history.html">History</a></li>
+    </ul>
+  </nav>
+
+  <div class="alerts-container">
+    <h2>Real-Time Fraud Alerts 🚨</h2>
+    <div class="alerts-table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>URL / App</th>
+            <th>Status & Category</th>
+            <th>Severity</th>
+            <th>Threat / Details</th>
+            <th>Alert Time</th>
+          </tr>
+        </thead>
+        <tbody id="alertsBody">
+          <tr><td colspan="5">Loading alerts...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+  <script>
+    async function loadAlerts() {
+      const body = document.getElementById("alertsBody");
+      try {
+        const res = await fetch("http://127.0.0.1:5000/alerts");
+        if (!res.ok) throw new Error("Backend error " + res.status);
+        const alerts = await res.json();
+
+        body.innerHTML = "";
+
+        if (!alerts.length) {
+          body.innerHTML = "<tr><td colspan='5'>No alerts available.</td></tr>";
+          return;
+        }
+
+        alerts.forEach(a => {
+          const row = `<tr>
+            <td>${a.url}</td>
+            <td>MALICIOUS (${a.category})</td>
+            <td>${a.severity}</td>
+            <td>${a.threat}</td>
+            <td>${a.timestamp}</td>
+          </tr>`;
+          body.innerHTML += row;
+        });
+      } catch (err) {
+        console.error("Failed to load alerts:", err);
+        body.innerHTML = "<tr><td colspan='5'>❌ Could not fetch alerts.</td></tr>";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadAlerts(); // initial fetch
+      setInterval(loadAlerts, 5000); // refresh every 5s
+    });
+  </script>
+</body>
+</html>
